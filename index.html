@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>01 - Particle text using BlotterJS</title>
+    <script src="https://cdn.rawgit.com/bradley/Blotter/master/build/blotter.min.js"></script>
+    <script src="https://cdn.rawgit.com/bradley/Blotter/3007fe6e/build/materials/fliesMaterial.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="main"></div>
+
+    <script>
+      container = document.getElementById("main");
+
+      var text = new Blotter.Text("Thank you Harnish !", {
+        family: "Old Standard TT",
+        size: 200,
+        fill: "black",
+        paddingLeft: 100,
+        paddingRight: 100,
+        paddingTop: 100,
+        paddingBottom: 100,
+      });
+
+      var material = new Blotter.FliesMaterial();
+      material.uniforms.uPointCellWidth.value = 0.0088;
+      material.uniforms.uPointRadius.value = 1.1;
+      material.uniforms.uSpeed.value = 4;
+
+      var blotter = new Blotter(material, {
+        texts: text,
+      });
+
+      var scope = blotter.forText(text);
+      scope.appendTo(container);
+    </script>
+  </body>
+</html>
